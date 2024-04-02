@@ -57,13 +57,13 @@
 
 * File Structure:
   * backend:
-    * `src/`: All your TypeScript source files.
+    * `src/`: All TypeScript source files.
       * `controllers/`: Functions that respond to HTTP requests.
-      * `models/`: Mongoose models for your database.
-      * `routes/`: Express routes defining your API endpoints.
+      * `models/`: Mongoose models for database.
+      * `routes/`: Express routes defining API endpoints.
       * `services/`: Business logic, such as authentication and chat services.
       * `utils/`: Utility functions.
-      * `app.ts`: Entry point of your Express application.
+      * `app.ts`: Entry point of Express application.
     * `dist/`: Where the compiled JavaScript files will reside.
   * frontend:
     * `pages/`: Contains page components.
