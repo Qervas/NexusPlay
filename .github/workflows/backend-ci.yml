@@ -1,0 +1,30 @@
+# .github/workflows/backend-ci.yml
+
+name: Backend CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: cd backend && npm ci
+    # Uncomment below if to build your TypeScript
+    # - run: cd backend && npm run build
+    # Uncomment below if have tests
+    # - run: cd backend && npm test
