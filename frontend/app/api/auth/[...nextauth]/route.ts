@@ -21,3 +21,4 @@ const authHandler = NextAuth(authOptions);
 
 export const GET = authHandler;
 export const POST = authHandler;
+export default authOptions;
