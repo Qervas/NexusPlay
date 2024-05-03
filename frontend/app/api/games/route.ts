@@ -16,14 +16,3 @@ export async function GET(req: NextRequest, res: NextResponse) {
 
   return new Response(JSON.stringify(games), { status: 200, headers: { "Content-Type": "application/json" } });
 }
-
-// export default function handler(req: NextApiRequest, res: NextApiResponse) {
-// 	const { id } = req.query;
-  
-// 	const game = games.find(g => g.id === id);
-// 	if (game) {
-// 	  res.status(200).json(game);
-// 	} else {
-// 	  res.status(404).json({ message: 'Game not found' });
-// 	}
-//   }
