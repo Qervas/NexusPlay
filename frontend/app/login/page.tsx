@@ -10,7 +10,7 @@ export default function Login() {
 
   useEffect(() => {
     if (session) {
-      redirect("/admin");
+      redirect("/profile");
     }
   }, [session]);
 

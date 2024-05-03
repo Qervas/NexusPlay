@@ -1,26 +1,13 @@
-// app/page.tsx: homepage
-import Head from 'next/head';
-import Layout from './layout';
-import Link from 'next/link'; // Import Link component from Next.js
-// import './styles/cyberpunk.css';
+// app/page.tsx (Server Component)
+import React from 'react';
+import getData from './hooks/getData';
+import HomePage from './HomePage'; // Import the Client Component
+import { getServerSession } from 'next-auth/next';
+import authOptions from './config/authConfig';
 
-const HomePage = () => {
-  return (
-    <Layout>
-	<Head>
-		<title>Welcome to NexusPlay</title>
-		<meta name="description" content="Explore the Next.js application NexusPlay" />
-		<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+export default async function Page() {
+  const session = await getServerSession(authOptions); // Get the session on the server-side
+  const { games, session: clientSession } = await getData(session);
 
-	</Head>
-	<h1>Welcome to NexusPlay</h1>
-	<p>This is the beginning of your Next.js application.</p>
-	{/* Add Link component with a button */}
-	<Link href="/login" passHref>
-		<button>Login</button>
-	</Link>
-</Layout>
-  );
-};
-
-export default HomePage;
+  return <HomePage games={games} session={clientSession} />;
+}

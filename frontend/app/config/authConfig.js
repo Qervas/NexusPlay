@@ -1,3 +1,4 @@
+// app/config/authConfig.js
 import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 
