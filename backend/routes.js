@@ -3,9 +3,10 @@ const express = require('express');
 const router = express.Router();
 const mongodb = require('mongodb');
 const dotenv = require('dotenv');
+dotenv.config();
+const mongoUtil = require('./utils/mongoUtil');
 
 // Configure dotenv
-dotenv.config();
 // MongoDB setup
 const uri = process.env.MONGODB_URI;
 const client = new mongodb.MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
