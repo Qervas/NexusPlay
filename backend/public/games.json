@@ -1,0 +1,17 @@
+[
+	{
+	  "id": "alpha",
+	  "title": "Alpha Game",
+	  "description": "A thrilling adventure game.",
+	  "thumbnailUrl": "/images/alpha-thumbnail.png",
+	  "playUrl": "/games/alpha"
+	},
+	{
+	  "id": "beta",
+	  "title": "Beta Game",
+	  "description": "A challenging puzzle game.",
+	  "thumbnailUrl": "/images/beta-thumbnail.png",
+	  "playUrl": "/games/beta"
+	}
+  ]
+  
