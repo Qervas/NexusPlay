@@ -6,10 +6,15 @@ const socketIo = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
+const cors = require('cors');
 const router = require('./routes'); // Import the router
 const path = require('path');
 const mongoUtil = require('./utils/mongoUtil');
 
+// Configure CORS
+app.use(cors({
+    origin: `${process.env.FRONTEND_URL}`  // This should match the URL of your frontend
+}));
 
 io.on('connection', (socket) => {
 	console.log('A user connected');

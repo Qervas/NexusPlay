@@ -38,7 +38,7 @@ const insertUpdateUsersRouteHandler = async (req, res) => {
 		if (!email || typeof email !== 'string') {
 			return res.status(400).json({ error: 'Email is required and must be a valid string.' });
 		}
-		const result = await db.collection('users').updateOne(
+		const result = await collection.updateOne(
             { email },
             { $set: { name, image } },
             { upsert: true }
