@@ -8,7 +8,7 @@ import Layout from './layout';
 import Head from 'next/head';
 import authOptions from './config/authConfig';
 import getData from './hooks/getData';
-
+import UserMenu from './widgets/userMenu';
 interface HomePageProps {
   games: Game[];
   session: any; // Replace with the actual session type
@@ -26,7 +26,11 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   
 
 const HomePage: React.FC<HomePageProps> = ({ games, session }) => {
-  const { data: clientSession } = useSession();
+  const { data: clientSession, status } = useSession();
+
+  if (status === 'loading') {
+	return <p>Loading...</p>;
+  }
 
   return (
     <Layout>
@@ -35,13 +39,10 @@ const HomePage: React.FC<HomePageProps> = ({ games, session }) => {
       </Head>
       <header>
         <h1>Welcome to GameHub</h1>
-        {!clientSession ? (
-          <button onClick={() => signIn()}>Sign In</button>
+        {clientSession ? (
+            <UserMenu />  // Use the User Menu here
         ) : (
-          <>
-            <p>Welcome, {clientSession.user?.name}</p>
-            <button onClick={() => signOut()}>Sign Out</button>
-          </>
+            <button onClick={() => signIn()}>Sign In</button>
         )}
       </header>
       <main>
