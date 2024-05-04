@@ -14,7 +14,7 @@ const connectToServer = async () => {
     if (!dbInstance) {
         try {
             await client.connect();
-            dbInstance = client.db('nexusplay'); // your database name
+            dbInstance = client.db('nexusplay'); 
             console.log("Successfully connected to MongoDB.");
         } catch (error) {
             console.error("Failed to connect to MongoDB", error);

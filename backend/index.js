@@ -19,14 +19,20 @@ io.on('connection', (socket) => {
 	// Additional real-time event handlers can be added here
 });
 
-// Initialize MongoDB connection
-
 async function initializeDatabase() {
-    await mongoUtil.connectToServer();
-    await mongoUtil.loadData(); // Ensure that loadData is exported and properly asynchronous
+    try {
+        await mongoUtil.connectToServer();
+        console.log("Database connection successfully established.");
+        await mongoUtil.loadData();
+        console.log("Initial data loaded successfully.");
+    } catch (error) {
+        console.error("Failed to initialize the database:", error);
+        throw new Error("Database initialization failed, server cannot start.");
+    }
 }
 
 initializeDatabase().then(() => {
+	app.use(express.json());
     app.use(router);
     app.use(express.static(path.join(__dirname, 'public')));
 
